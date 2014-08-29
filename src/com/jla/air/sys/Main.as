@@ -1,6 +1,6 @@
 package com.jla.air.sys
 {
-    import com.jla.air.util.sprintf;
+    import com.jla.as3.util.sprintf;
 
     import flash.desktop.NativeApplication;
     import flash.display.Sprite;

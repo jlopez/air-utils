@@ -5,7 +5,7 @@ package com.jla.air.cmd
 {
     import com.jla.air.sys.GetOpt;
     import com.jla.air.sys.System;
-    import com.jla.air.util.vsprintf;
+    import com.jla.as3.util.vsprintf;
 
     import flash.filesystem.File;
 

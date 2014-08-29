@@ -3,7 +3,7 @@
  */
 package com.jla.air.io
 {
-    import com.jla.air.util.vsprintf;
+    import com.jla.as3.util.vsprintf;
 
     public class TracePrintStream implements PrintStream
     {
