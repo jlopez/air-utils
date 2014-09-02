@@ -4,6 +4,7 @@
 package com.jla.air.util
 {
     import flash.filesystem.FileMode;
+    import flash.utils.ByteArray;
 
     public class FileUtils
     {
@@ -33,6 +34,15 @@ package com.jla.air.util
             return rv;
         }
 
+        public static function readBytes(file:*):ByteArray
+        {
+            var wrapper:FileStreamWrapper = FileStreamWrapper.fromArgument(file, FileMode.READ);
+            if (!wrapper) return null;
+            var rv:ByteArray = wrapper.readBytes();
+            wrapper.close();
+            return rv;
+        }
+
         public static function writeJSON(file:*, data:Object):void
         {
             writeString(file, JSON.stringify(data));
@@ -51,6 +61,7 @@ package com.jla.air.util
 import flash.filesystem.File;
 import flash.filesystem.FileMode;
 import flash.filesystem.FileStream;
+import flash.utils.ByteArray;
 
 class FileStreamWrapper
 {
@@ -66,6 +77,13 @@ class FileStreamWrapper
     public function read():String
     {
         return _fileStream.readUTFBytes(_fileStream.bytesAvailable);
+    }
+
+    public function readBytes():ByteArray
+    {
+        var bytes:ByteArray = new ByteArray();
+        _fileStream.readBytes(bytes, 0, _fileStream.bytesAvailable);
+        return bytes;
     }
 
     public static function fromArgument(file:*, mode:String):FileStreamWrapper
