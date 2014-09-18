@@ -55,6 +55,13 @@ package com.jla.air.util
             wrapper.write(s);
             wrapper.close();
         }
+
+        public static function writeBytes(file:*, byteArray:ByteArray):void
+        {
+            var wrapper:FileStreamWrapper = FileStreamWrapper.fromArgument(file, FileMode.WRITE);
+            wrapper.fileStream.writeBytes(byteArray);
+            wrapper.close();
+        }
     }
 }
 
@@ -103,6 +110,11 @@ class FileStreamWrapper
             fs.open(f, mode);
         }
         return new FileStreamWrapper(fs, owns);
+    }
+
+    public function get fileStream():FileStream
+    {
+        return _fileStream;
     }
 
     public function write(s:String):void
